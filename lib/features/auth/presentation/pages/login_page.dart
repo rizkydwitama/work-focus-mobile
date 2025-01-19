@@ -1,25 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:work_focus_mobile/core/theme/app_colors.dart';
+import 'package:work_focus_mobile/features/auth/presentation/controllers/login_controller.dart';
 
-class LoginPage extends StatefulWidget {
+import '../../../../routes/app_routes.dart';
+
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  
-  @override
-  void initState() {
-    _tabController = TabController(length: 2, vsync: this);
-    super.initState();
-  }
-  
-  @override
   Widget build(BuildContext context) {
+    final LoginController controller = Get.find<LoginController>();
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -30,23 +23,23 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
               Text(
                 'Work Focus',
                 style: TextStyle(
-                  color: AppColors.blackColor,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w600
+                    color: AppColors.blackColor,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600
                 ),
               ),
               const SizedBox(height: 4,),
               Text(
                 'Track your activity work',
                 style: TextStyle(
-                  color: AppColors.greyColor,
-                  fontSize: 19,
-                  fontWeight: FontWeight.w400
+                    color: AppColors.greyColor,
+                    fontSize: 19,
+                    fontWeight: FontWeight.w400
                 ),
               ),
               const SizedBox(height: 44,),
-              TabBar(
-                controller: _tabController,
+              Obx(() => TabBar(
+                controller: controller.tabController,
                 tabAlignment: TabAlignment.start,
                 indicatorColor: AppColors.transparentColor,
                 dividerHeight: 0.0,
@@ -55,20 +48,18 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 labelColor: AppColors.transparentColor,
                 indicatorPadding: EdgeInsets.zero,
                 onTap: (int index) {
-                  setState(() {
-                    _tabController.index = index;
-                  });
+                  controller.currentIndex.value = index;
                 },
                 labelPadding: EdgeInsets.only(
-                  right: 8
+                    right: 8
                 ),
                 padding: EdgeInsets.zero,
                 tabs: [
                   Chip(
                     side: BorderSide.none,
-                    backgroundColor: _tabController.index == 0
-                    ? AppColors.blackColor
-                    : AppColors.whiteColor,
+                    backgroundColor: controller.currentIndex.value == 0
+                        ? AppColors.blackColor
+                        : AppColors.whiteColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),
                         side: BorderSide.none
@@ -76,7 +67,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                     label: Text(
                       'Login',
                       style: TextStyle(
-                          color: _tabController.index == 0
+                          color: controller.currentIndex.value == 0
                               ? AppColors.whiteColor
                               : AppColors.blackColor,
                           fontSize: 14,
@@ -86,7 +77,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                   ),
                   Chip(
                     side: BorderSide.none,
-                    backgroundColor: _tabController.index == 1
+                    backgroundColor: controller.currentIndex.value == 1
                         ? AppColors.blackColor
                         : AppColors.whiteColor,
                     shape: RoundedRectangleBorder(
@@ -96,7 +87,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                     label: Text(
                       'Sign Up',
                       style: TextStyle(
-                          color: _tabController.index == 1
+                          color: controller.currentIndex.value == 1
                               ? AppColors.whiteColor
                               : AppColors.blackColor,
                           fontSize: 14,
@@ -105,14 +96,14 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                     ),
                   ),
                 ],
-              ),
+              ),),
               const SizedBox(height: 16,),
               Text(
                 'Email',
                 style: TextStyle(
-                  color: AppColors.blackColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500
+                    color: AppColors.blackColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500
                 ),
               ),
               const SizedBox(height: 10,),
@@ -126,8 +117,8 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 decoration: InputDecoration(
                   filled: false,
                   contentPadding: EdgeInsets.symmetric(
-                    vertical: 12,
-                    horizontal: 16
+                      vertical: 12,
+                      horizontal: 16
                   ),
 
                   enabledBorder: OutlineInputBorder(
@@ -210,9 +201,9 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                   child: Text(
                     'Forgot Password?',
                     style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.greyColor
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.greyColor
                     ),
                   ),
                 ),
@@ -222,19 +213,21 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 width: double.infinity,
                 child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: AppColors.blackColor,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4)
-                      )
+                        backgroundColor: AppColors.blackColor,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4)
+                        )
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.bottomNavigationBar);
+                    },
                     child: Text(
                       'Login',
                       style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.whiteColor
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.whiteColor
                       ),
                     )
                 ),
@@ -243,25 +236,25 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
               Align(
                 alignment: Alignment.center,
                 child: RichText(
-                 text: TextSpan(
-                   text: "Don't have an account? ",
-                   style: TextStyle(
-                     fontSize: 16,
-                     fontWeight: FontWeight.w400,
-                     color: AppColors.greyColor,
-                   ),
-                   children: [
-                     TextSpan(
-                       text: 'Sign Up',
-                       recognizer: TapGestureRecognizer()..onTap = () {},
-                       style: TextStyle(
-                         fontSize: 16,
-                         fontWeight: FontWeight.w500,
-                         color: AppColors.blackColor,
-                       )
-                     )
-                   ]
-                 ),
+                  text: TextSpan(
+                      text: "Don't have an account? ",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.greyColor,
+                      ),
+                      children: [
+                        TextSpan(
+                            text: 'Sign Up',
+                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.blackColor,
+                            )
+                        )
+                      ]
+                  ),
 
                 ),
               )

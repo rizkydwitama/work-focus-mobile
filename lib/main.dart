@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:work_focus_mobile/core/theme/app_theme.dart';
-import 'package:work_focus_mobile/features/auth/presentation/pages/login_page.dart';
+import 'package:work_focus_mobile/routes/app_pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Inter'
-      ),
-      home: LoginPage(),
+      theme: AppTheme.lightThemeMode,
+      initialRoute: AppPages.initial,
+      getPages: AppPages.pages,
     );
   }
 }
