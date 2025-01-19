@@ -26,7 +26,7 @@ class BottomNavigationBarPage extends StatelessWidget {
         ],
       ),),
       bottomNavigationBar: Container(
-        height: 86,
+        height: 63,
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           border: Border.all(
@@ -84,6 +84,10 @@ class BottomNavigationBarPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_worklog_unselected.svg',
+                    colorFilter: ColorFilter.mode(
+                        AppColors.blackColor,
+                        BlendMode.srcIn
+                    )
                   ),
                 )
                     :
@@ -105,6 +109,10 @@ class BottomNavigationBarPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_analytic_unselected.svg',
+                      colorFilter: ColorFilter.mode(
+                          AppColors.blackColor,
+                          BlendMode.srcIn
+                      )
                   ),
                 )
                     :
