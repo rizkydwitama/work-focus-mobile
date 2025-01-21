@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -76,26 +79,68 @@ class DashboardPage extends StatelessWidget {
                         )
                       ],
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          '656',
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.blackColor
+                    SizedBox(
+                      width: 170,
+                      height: 170,
+                      child: Stack(
+                        children: [
+                          Transform.rotate(
+                            angle: -pi/2,
+                            child: PieChart(
+                                PieChartData(
+                                  centerSpaceRadius: 80,
+                                  sectionsSpace: 0,
+                                  startDegreeOffset: 215,
+                                  sections: [
+                                    PieChartSectionData(
+                                      color: AppColors.blueChartColor,
+                                      value: 21,
+                                      radius: 5,
+                                      showTitle: false,
+                                    ),
+                                    PieChartSectionData(
+                                      color: AppColors.whiteChartColor,
+                                      value: 34,
+                                      radius: 5,
+                                      showTitle: false,
+                                    ),
+                                    PieChartSectionData(
+                                      color: AppColors.transparentColor,
+                                      value: 15,
+                                      radius: 5,
+                                      showTitle: false,
+                                    ),
+                                  ],
+                                )
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Working',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.secondaryGreyColor
-                          ),
-                        )
-                      ],
+                          Align(
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '656',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.blackColor,
+                                      fontSize: 32
+                                  ),
+                                ),
+                                Text(
+                                  'Working',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.secondaryGreyColor
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -120,7 +165,7 @@ class DashboardPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 70,),
+                const SizedBox(height: 8,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -136,12 +181,23 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 4,),
-                        Container(
-                          width: 86,
-                          height: 5,
-                          decoration: BoxDecoration(
-                            color: AppColors.failedIndicatorColor
-                          ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: 80,
+                              height: 5,
+                              decoration: BoxDecoration(
+                                color: AppColors.emptyIndicatorColor
+                              ),
+                            ),
+                            Container(
+                              width: 80 * 0.7.clamp(0.1, 1.0),
+                              height: 5,
+                              decoration: BoxDecoration(
+                                  color: AppColors.failedIndicatorColor
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 4,),
                         Text(
@@ -166,12 +222,23 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 4,),
-                        Container(
-                          width: 86,
-                          height: 5,
-                          decoration: BoxDecoration(
-                              color: AppColors.progressIndicatorColor
-                          ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: 80,
+                              height: 5,
+                              decoration: BoxDecoration(
+                                  color: AppColors.emptyIndicatorColor
+                              ),
+                            ),
+                            Container(
+                              width: 80 * 0.5.clamp(0.1, 1.0),
+                              height: 5,
+                              decoration: BoxDecoration(
+                                  color: AppColors.progressIndicatorColor
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 4,),
                         Text(
@@ -196,12 +263,23 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 4,),
-                        Container(
-                          width: 86,
-                          height: 5,
-                          decoration: BoxDecoration(
-                              color: AppColors.successIndicatorColor
-                          ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: 80,
+                              height: 5,
+                              decoration: BoxDecoration(
+                                  color: AppColors.emptyIndicatorColor
+                              ),
+                            ),
+                            Container(
+                              width: 80 * 0.85.clamp(0.1, 1.0),
+                              height: 5,
+                              decoration: BoxDecoration(
+                                  color: AppColors.successIndicatorColor
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 4,),
                         Text(
@@ -388,6 +466,47 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 8,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12
+                        ),
+                        child: SizedBox(
+                          height: 17,
+                          child: LineChart(
+                            LineChartData(
+                              gridData: FlGridData(show: false),
+                              titlesData: FlTitlesData(show: false),
+                              borderData: FlBorderData(show: false),
+                              minX: 0,
+                              maxX: ([6, 8, 7, 6, 7, 8].length - 1).toDouble(),
+                              minY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a < b ? a : b) - 2,
+                              maxY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a > b ? a : b) + 2,
+                              lineBarsData: [
+                                LineChartBarData(
+                                  spots: List.generate(
+                                    [6, 8, 7, 6, 7, 8].length,
+                                        (index) => FlSpot(index.toDouble(), [6.0, 8.0, 7.0, 6.0, 7.0, 8.0][index]),
+                                  ),
+                                  isCurved: true,
+                                  color: AppColors.orangeLineChartColor,
+                                  dotData: FlDotData(
+                                    show: true,
+                                    getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                                      radius: 3,
+                                      color: AppColors.whiteColor,
+                                      strokeColor: AppColors.orangeLineChartColor,
+                                      strokeWidth: 2,
+                                    ),
+                                  ),
+                                  belowBarData: BarAreaData(show: false),
+                                  barWidth: 3,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                       Spacer(),
                       Divider(
                         height: 1,
@@ -459,6 +578,47 @@ class DashboardPage extends StatelessWidget {
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: AppColors.greyColor
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12
+                        ),
+                        child: SizedBox(
+                          height: 17,
+                          child: LineChart(
+                            LineChartData(
+                              gridData: FlGridData(show: false),
+                              titlesData: FlTitlesData(show: false),
+                              borderData: FlBorderData(show: false),
+                              minX: 0,
+                              maxX: ([6, 8, 7, 6, 7, 8].length - 1).toDouble(),
+                              minY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a < b ? a : b) - 2,
+                              maxY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a > b ? a : b) + 2,
+                              lineBarsData: [
+                                LineChartBarData(
+                                  spots: List.generate(
+                                    [6, 8, 7, 6, 7, 8].length,
+                                        (index) => FlSpot(index.toDouble(), [6.0, 8.0, 7.0, 6.0, 7.0, 8.0][index]),
+                                  ),
+                                  isCurved: true,
+                                  color: AppColors.purpleLineChartColor,
+                                  dotData: FlDotData(
+                                    show: true,
+                                    getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                                      radius: 3,
+                                      color: AppColors.whiteColor,
+                                      strokeColor: AppColors.purpleLineChartColor,
+                                      strokeWidth: 2,
+                                    ),
+                                  ),
+                                  belowBarData: BarAreaData(show: false),
+                                  barWidth: 3,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

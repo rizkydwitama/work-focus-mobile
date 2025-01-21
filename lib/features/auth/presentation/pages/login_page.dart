@@ -159,7 +159,7 @@ class LoginPage extends StatelessWidget {
               obscuringCharacter: '●',
               style: TextStyle(
                   color: AppColors.blackColor,
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.w400
               ),
               decoration: InputDecoration(

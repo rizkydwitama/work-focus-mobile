@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_focus_mobile/features/insight/presentation/controllers/insight_controller.dart';
@@ -71,16 +72,65 @@ class InsightPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 28,),
+              const SizedBox(height: 12,),
+              Divider(
+                color: AppColors.brightGreyColor,
+              ),
+              const SizedBox(height: 16,),
               Center(
-                child: Text(
-                  '100%',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.blackColor,
-                      fontWeight: FontWeight.w600
-                  ),
-                ),
+                child: SizedBox(
+                  width: 160,
+                  height: 160,
+                  child: Stack(
+                    children: [
+                      PieChart(
+                          PieChartData(
+                            centerSpaceRadius: 80,
+                            sectionsSpace: 2,
+                            startDegreeOffset: 0,
+                            sections: [
+                              PieChartSectionData(
+                                color: AppColors.blueChartColor,
+                                value: 100,
+                                radius: 5,
+                                showTitle: false,
+                                titleStyle: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          )
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '100%',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.blackColor,
+                                fontSize: 32
+                              ),
+                            ),
+                            Text(
+                              'August\nTracked Rate',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.secondaryGreyColor
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                )
               ),
               const SizedBox(height: 16,),
               Text(
@@ -340,7 +390,6 @@ class InsightPage extends StatelessWidget {
                         }
                     ),
                   )
-                
                 ],
               )
             ],
