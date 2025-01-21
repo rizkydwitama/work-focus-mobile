@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:work_focus_mobile/features/dashboard/presentation/controllers/dashboard_controller.dart';
-
+import 'package:work_focus_mobile/routes/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -317,29 +317,31 @@ class DashboardPage extends StatelessWidget {
           const SizedBox(height: 28,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Insight & Analytics',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.blackColor
+            child: InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.insight);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Insight & Analytics',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.blackColor
+                    ),
                   ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
+                  Container(
                     width: 24,
                     height: 24,
                     alignment: Alignment.center,
                     child: SvgPicture.asset(
                       'assets/images/icons/icon_arrow_forward.svg'
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 16,),

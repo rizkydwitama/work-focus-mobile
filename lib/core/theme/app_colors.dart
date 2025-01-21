@@ -16,4 +16,10 @@ class AppColors {
 
   static const Color unselectedDotColor = Color(0xFFD9D9D9);
   static const Color selectedDotColor = Color(0xFF010103);
+
+  static const Color blueTrackedColor = Color(0xFF6793EF);
+  static const Color whiteUntrackedColor = Color(0xFFF6F6F6);
+
+  static const Color blueBackgroundColor = Color(0xFFD9E3FB);
+  static const Color gainsboroColor = Color(0xFFE2E2E2);
 }
