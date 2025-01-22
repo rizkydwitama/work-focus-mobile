@@ -426,241 +426,248 @@ class DashboardPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 165.5,
-                  height: 134,
-                  decoration: BoxDecoration(
-                    color: AppColors.whiteColor,
-                    borderRadius: BorderRadius.circular(8)
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 16),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 12
-                        ),
-                        child: Text(
-                          'Expenditure',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.blackColor,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                Expanded(
+                  child: AspectRatio(
+                    aspectRatio: 165.5 / 134,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.whiteColor,
+                        borderRadius: BorderRadius.circular(8)
                       ),
-                      const SizedBox(height: 4,),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 12
-                        ),
-                        child: Text(
-                          '19 Aug - Now',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.greyColor
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12
-                        ),
-                        child: SizedBox(
-                          height: 17,
-                          child: LineChart(
-                            LineChartData(
-                              gridData: FlGridData(show: false),
-                              titlesData: FlTitlesData(show: false),
-                              borderData: FlBorderData(show: false),
-                              minX: 0,
-                              maxX: ([6, 8, 7, 6, 7, 8].length - 1).toDouble(),
-                              minY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a < b ? a : b) - 2,
-                              maxY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a > b ? a : b) + 2,
-                              lineBarsData: [
-                                LineChartBarData(
-                                  spots: List.generate(
-                                    [6, 8, 7, 6, 7, 8].length,
-                                        (index) => FlSpot(index.toDouble(), [6.0, 8.0, 7.0, 6.0, 7.0, 8.0][index]),
-                                  ),
-                                  isCurved: true,
-                                  color: AppColors.orangeLineChartColor,
-                                  dotData: FlDotData(
-                                    show: true,
-                                    getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
-                                      radius: 3,
-                                      color: AppColors.whiteColor,
-                                      strokeColor: AppColors.orangeLineChartColor,
-                                      strokeWidth: 2,
-                                    ),
-                                  ),
-                                  belowBarData: BarAreaData(show: false),
-                                  barWidth: 3,
-                                ),
-                              ],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12
+                            ),
+                            child: Text(
+                              'Expenditure',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColors.blackColor,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Spacer(),
-                      Divider(
-                        height: 1,
-                        color: AppColors.brightGreyColor,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '1426',
+                          const SizedBox(height: 4,),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12
+                            ),
+                            child: Text(
+                              '19 Aug - Now',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                color: AppColors.blackColor
+                                color: AppColors.greyColor
                               ),
                             ),
-                            const SizedBox(width: 4,),
-                            Text(
-                              'Task',
+                          ),
+                          const SizedBox(height: 8,),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12
+                            ),
+                            child: SizedBox(
+                              height: 17,
+                              child: LineChart(
+                                LineChartData(
+                                  gridData: FlGridData(show: false),
+                                  titlesData: FlTitlesData(show: false),
+                                  borderData: FlBorderData(show: false),
+                                  minX: 0,
+                                  maxX: ([6, 8, 7, 6, 7, 8].length - 1).toDouble(),
+                                  minY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a < b ? a : b) - 2,
+                                  maxY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a > b ? a : b) + 2,
+                                  lineBarsData: [
+                                    LineChartBarData(
+                                      spots: List.generate(
+                                        [6, 8, 7, 6, 7, 8].length,
+                                            (index) => FlSpot(index.toDouble(), [6.0, 8.0, 7.0, 6.0, 7.0, 8.0][index]),
+                                      ),
+                                      isCurved: true,
+                                      color: AppColors.orangeLineChartColor,
+                                      dotData: FlDotData(
+                                        show: true,
+                                        getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                                          radius: 3,
+                                          color: AppColors.whiteColor,
+                                          strokeColor: AppColors.orangeLineChartColor,
+                                          strokeWidth: 2,
+                                        ),
+                                      ),
+                                      belowBarData: BarAreaData(show: false),
+                                      barWidth: 3,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                          Divider(
+                            height: 1,
+                            color: AppColors.brightGreyColor,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '1426',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.blackColor
+                                  ),
+                                ),
+                                const SizedBox(width: 4,),
+                                Text(
+                                  'Task',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.greyColor
+                                  ),
+                                ),
+                              ],
+                            )
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12,),
+                Expanded(
+                  child: AspectRatio(
+                    aspectRatio: 165.5 / 134,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.whiteColor,
+                          borderRadius: BorderRadius.circular(8)
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 12
+                            ),
+                            child: Text(
+                              'Habits Trend',
                               style: TextStyle(
-                                  fontSize: 12,
+                                fontSize: 16,
+                                color: AppColors.blackColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 4,),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 12
+                            ),
+                            child: Text(
+                              '19 Aug - Now',
+                              style: TextStyle(
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.greyColor
                               ),
                             ),
-                          ],
-                        )
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 165.5,
-                  height: 134,
-                  decoration: BoxDecoration(
-                      color: AppColors.whiteColor,
-                      borderRadius: BorderRadius.circular(8)
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 16),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 12
-                        ),
-                        child: Text(
-                          'Habits Trend',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.blackColor,
-                            fontWeight: FontWeight.w500,
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 4,),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 12
-                        ),
-                        child: Text(
-                          '19 Aug - Now',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.greyColor
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12
-                        ),
-                        child: SizedBox(
-                          height: 17,
-                          child: LineChart(
-                            LineChartData(
-                              gridData: FlGridData(show: false),
-                              titlesData: FlTitlesData(show: false),
-                              borderData: FlBorderData(show: false),
-                              minX: 0,
-                              maxX: ([6, 8, 7, 6, 7, 8].length - 1).toDouble(),
-                              minY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a < b ? a : b) - 2,
-                              maxY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a > b ? a : b) + 2,
-                              lineBarsData: [
-                                LineChartBarData(
-                                  spots: List.generate(
-                                    [6, 8, 7, 6, 7, 8].length,
-                                        (index) => FlSpot(index.toDouble(), [6.0, 8.0, 7.0, 6.0, 7.0, 8.0][index]),
-                                  ),
-                                  isCurved: true,
-                                  color: AppColors.purpleLineChartColor,
-                                  dotData: FlDotData(
-                                    show: true,
-                                    getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
-                                      radius: 3,
-                                      color: AppColors.whiteColor,
-                                      strokeColor: AppColors.purpleLineChartColor,
-                                      strokeWidth: 2,
+                          const SizedBox(height: 8,),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12
+                            ),
+                            child: SizedBox(
+                              height: 17,
+                              child: LineChart(
+                                LineChartData(
+                                  gridData: FlGridData(show: false),
+                                  titlesData: FlTitlesData(show: false),
+                                  borderData: FlBorderData(show: false),
+                                  minX: 0,
+                                  maxX: ([6, 8, 7, 6, 7, 8].length - 1).toDouble(),
+                                  minY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a < b ? a : b) - 2,
+                                  maxY: [6, 8, 7, 6, 7, 8].reduce((a, b) => a > b ? a : b) + 2,
+                                  lineBarsData: [
+                                    LineChartBarData(
+                                      spots: List.generate(
+                                        [6, 8, 7, 6, 7, 8].length,
+                                            (index) => FlSpot(index.toDouble(), [6.0, 8.0, 7.0, 6.0, 7.0, 8.0][index]),
+                                      ),
+                                      isCurved: true,
+                                      color: AppColors.purpleLineChartColor,
+                                      dotData: FlDotData(
+                                        show: true,
+                                        getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                                          radius: 3,
+                                          color: AppColors.whiteColor,
+                                          strokeColor: AppColors.purpleLineChartColor,
+                                          strokeWidth: 2,
+                                        ),
+                                      ),
+                                      belowBarData: BarAreaData(show: false),
+                                      barWidth: 3,
                                     ),
-                                  ),
-                                  belowBarData: BarAreaData(show: false),
-                                  barWidth: 3,
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Spacer(),
-                      Divider(
-                        height: 1,
-                        color: AppColors.brightGreyColor,
-                      ),
-                      Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
+                          Spacer(),
+                          Divider(
+                            height: 1,
+                            color: AppColors.brightGreyColor,
                           ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '1426',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.blackColor
-                                ),
+                          Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 8,
                               ),
-                              const SizedBox(width: 4,),
-                              Text(
-                                'Task',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.greyColor
-                                ),
-                              ),
-                            ],
-                          )
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '1426',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.blackColor
+                                    ),
+                                  ),
+                                  const SizedBox(width: 4,),
+                                  Text(
+                                    'Task',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.greyColor
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ],
             )
-          )
+          ),
+          const SizedBox(height: 20,)
         ]
       )
     );
