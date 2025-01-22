@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LoginController controller = Get.find<LoginController>();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -22,7 +23,7 @@ class LoginPage extends StatelessWidget {
             Text(
               'Work Focus',
               style: TextStyle(
-                  color: AppColors.blackColor,
+                  color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                   fontSize: 32,
                   fontWeight: FontWeight.w600
               ),
@@ -57,8 +58,8 @@ class LoginPage extends StatelessWidget {
                 Chip(
                   side: BorderSide.none,
                   backgroundColor: controller.currentIndex.value == 0
-                      ? AppColors.blackColor
-                      : AppColors.whiteColor,
+                      ? isDarkMode ? AppColors.whiteColor : AppColors.blackColor
+                      : isDarkMode ? AppColors.blackColor : AppColors.whiteColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(100),
                       side: BorderSide.none
@@ -67,8 +68,8 @@ class LoginPage extends StatelessWidget {
                     'Login',
                     style: TextStyle(
                         color: controller.currentIndex.value == 0
-                            ? AppColors.whiteColor
-                            : AppColors.blackColor,
+                            ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
+                            : isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                         fontSize: 14,
                         fontWeight: FontWeight.w400
                     ),
@@ -77,8 +78,8 @@ class LoginPage extends StatelessWidget {
                 Chip(
                   side: BorderSide.none,
                   backgroundColor: controller.currentIndex.value == 1
-                      ? AppColors.blackColor
-                      : AppColors.whiteColor,
+                      ? isDarkMode ? AppColors.whiteColor : AppColors.blackColor
+                      : isDarkMode ? AppColors.blackColor : AppColors.whiteColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(100),
                       side: BorderSide.none
@@ -87,8 +88,8 @@ class LoginPage extends StatelessWidget {
                     'Sign Up',
                     style: TextStyle(
                         color: controller.currentIndex.value == 1
-                            ? AppColors.whiteColor
-                            : AppColors.blackColor,
+                            ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
+                            : isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                         fontSize: 14,
                         fontWeight: FontWeight.w400
                     ),
@@ -100,16 +101,18 @@ class LoginPage extends StatelessWidget {
             Text(
               'Email',
               style: TextStyle(
-                  color: AppColors.blackColor,
+                  color: isDarkMode
+                      ? AppColors.whiteColor
+                      : AppColors.blackColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w500
               ),
             ),
             const SizedBox(height: 10,),
             TextFormField(
-              cursorColor: AppColors.blackColor,
+              cursorColor: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
               style: TextStyle(
-                  color: AppColors.blackColor,
+                  color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w400
               ),
@@ -119,10 +122,11 @@ class LoginPage extends StatelessWidget {
                     vertical: 12,
                     horizontal: 16
                 ),
-
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: AppColors.brightGreyColor,
+                        color: isDarkMode
+                            ? AppColors.whiteColor.withValues(alpha: 0.16)
+                            : AppColors.greyColor,
                         width: 1.0,
                         strokeAlign: BorderSide.strokeAlignInside
                     ),
@@ -132,7 +136,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 focusedBorder:  OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: AppColors.blackColor,
+                        color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                         width: 1.0,
                         strokeAlign: BorderSide.strokeAlignInside
                     ),
@@ -147,18 +151,18 @@ class LoginPage extends StatelessWidget {
             Text(
               'Password',
               style: TextStyle(
-                  color: AppColors.blackColor,
+                  color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w500
               ),
             ),
             const SizedBox(height: 10,),
             TextFormField(
-              cursorColor: AppColors.blackColor,
+              cursorColor: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
               obscureText: true,
               obscuringCharacter: '●',
               style: TextStyle(
-                  color: AppColors.blackColor,
+                  color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                   fontSize: 12,
                   fontWeight: FontWeight.w400
               ),
@@ -168,10 +172,11 @@ class LoginPage extends StatelessWidget {
                     vertical: 12,
                     horizontal: 16
                 ),
-
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: AppColors.brightGreyColor,
+                        color: isDarkMode
+                            ? AppColors.whiteColor.withValues(alpha: 0.16)
+                            : AppColors.greyColor,
                         width: 1.0,
                         strokeAlign: BorderSide.strokeAlignInside
                     ),
@@ -181,7 +186,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 focusedBorder:  OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: AppColors.blackColor,
+                        color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                         width: 1.0,
                         strokeAlign: BorderSide.strokeAlignInside
                     ),
@@ -212,7 +217,7 @@ class LoginPage extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: AppColors.blackColor,
+                      backgroundColor: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(4)
@@ -226,7 +231,7 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.whiteColor
+                        color: isDarkMode ? AppColors.blackColor : AppColors.whiteColor
                     ),
                   )
               ),
@@ -249,7 +254,7 @@ class LoginPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.blackColor,
+                            color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                           )
                       )
                     ]
