@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_focus_mobile/core/theme/app_colors.dart';
 import 'package:work_focus_mobile/features/auth/presentation/controllers/login_controller.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../routes/app_routes.dart';
 
 class LoginPage extends StatelessWidget {
@@ -13,6 +13,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoginController controller = Get.find<LoginController>();
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final localization = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -21,7 +22,7 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Work Focus',
+              localization.login_title,
               style: TextStyle(
                   color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                   fontSize: 32,
@@ -30,7 +31,7 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 4,),
             Text(
-              'Track your activity work',
+              localization.login_subtitle,
               style: TextStyle(
                   color: AppColors.greyColor,
                   fontSize: 19,
@@ -65,7 +66,7 @@ class LoginPage extends StatelessWidget {
                       side: BorderSide.none
                   ),
                   label: Text(
-                    'Login',
+                    localization.login,
                     style: TextStyle(
                         color: controller.currentIndex.value == 0
                             ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
@@ -85,7 +86,7 @@ class LoginPage extends StatelessWidget {
                       side: BorderSide.none
                   ),
                   label: Text(
-                    'Sign Up',
+                    localization.sign_up,
                     style: TextStyle(
                         color: controller.currentIndex.value == 1
                             ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
@@ -99,7 +100,7 @@ class LoginPage extends StatelessWidget {
             ),),
             const SizedBox(height: 16,),
             Text(
-              'Email',
+              localization.email ,
               style: TextStyle(
                   color: isDarkMode
                       ? AppColors.whiteColor
@@ -149,7 +150,7 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 16,),
             Text(
-              'Password',
+              localization.password,
               style: TextStyle(
                   color: isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                   fontSize: 14,
@@ -203,7 +204,7 @@ class LoginPage extends StatelessWidget {
               child: InkWell(
                 onTap: () {},
                 child: Text(
-                  'Forgot Password?',
+                  localization.forgot_password,
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -227,7 +228,7 @@ class LoginPage extends StatelessWidget {
                     Get.toNamed(AppRoutes.bottomNavigationBar);
                   },
                   child: Text(
-                    'Login',
+                    localization.login,
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -241,7 +242,7 @@ class LoginPage extends StatelessWidget {
               alignment: Alignment.center,
               child: RichText(
                 text: TextSpan(
-                    text: "Don't have an account? ",
+                    text: '${localization.no_account} ',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -249,7 +250,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                          text: 'Sign Up',
+                          text: localization.sign_up,
                           recognizer: TapGestureRecognizer()..onTap = () {},
                           style: TextStyle(
                             fontSize: 16,

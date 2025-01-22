@@ -6,7 +6,7 @@ import 'package:work_focus_mobile/features/bottom_navigation_bar/presentation/co
 import 'package:work_focus_mobile/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:work_focus_mobile/features/profile/presentation/pages/profile_page.dart';
 import 'package:work_focus_mobile/features/work_log/presentation/pages/work_log_page.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class BottomNavigationBarPage extends StatelessWidget {
@@ -16,6 +16,7 @@ class BottomNavigationBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final BottomNavigationBarController controller = Get.find();
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final localization = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: Obx(() => IndexedStack(
@@ -95,7 +96,7 @@ class BottomNavigationBarPage extends StatelessWidget {
                       )
                   ),
                 ),
-                label: 'Dashboard'
+                label: localization.dashboard_title
             ),
             BottomNavigationBarItem(
                 icon: controller.currentIndex.value == 1?
@@ -128,7 +129,7 @@ class BottomNavigationBarPage extends StatelessWidget {
                       )
                   ),
                 ),
-                label: 'Work Log'
+                label: localization.work_log
             ),
             BottomNavigationBarItem(
                 icon: controller.currentIndex.value == 2?
@@ -161,7 +162,7 @@ class BottomNavigationBarPage extends StatelessWidget {
                       )
                   ),
                 ),
-                label: 'Analytic'
+                label: localization.analytic
             ),
             BottomNavigationBarItem(
                 icon: controller.currentIndex.value == 3?
@@ -194,7 +195,7 @@ class BottomNavigationBarPage extends StatelessWidget {
                       )
                   ),
                 ),
-                label: 'Profile'
+                label: localization.profile
             )
           ],
         ),)

@@ -2,7 +2,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:work_focus_mobile/features/profile/presentation/controllers/profile_controller.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -12,6 +12,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ProfileController controller = Get.find();
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final localization = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: isDarkMode
@@ -30,7 +31,7 @@ class ProfilePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Profile',
+                  localization.profile,
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w600,
@@ -78,7 +79,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Member Since 21 August 2024',
+                          localization.member,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
@@ -95,7 +96,7 @@ class ProfilePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: Text(
-              'General',
+              localization.general,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
@@ -148,7 +149,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 16,),
                         Text(
-                          'Profile',
+                          localization.profile,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -192,7 +193,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 16,),
                         Text(
-                          'Data & Privacy',
+                          localization.data_privacy,
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -236,7 +237,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 16,),
                         Text(
-                          'Subscription',
+                          localization.subscription,
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -280,7 +281,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 16,),
                         Text(
-                          'Password',
+                          localization.password,
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -316,7 +317,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 16,),
                         Text(
-                          'Sign Out',
+                          localization.sign_out,
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,

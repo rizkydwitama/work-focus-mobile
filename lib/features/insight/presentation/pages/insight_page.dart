@@ -2,8 +2,13 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_focus_mobile/features/insight/presentation/controllers/insight_controller.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../data/repositories/active_day_repository_impl.dart';
+import '../../data/repositories/month_repository_impl.dart';
+import '../../domain/entities/month.dart';
+import '../../domain/repositories/active_day_repository.dart';
+import '../../domain/repositories/month_repository.dart';
 
 class InsightPage extends StatelessWidget {
   const InsightPage({super.key});
@@ -12,6 +17,13 @@ class InsightPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final InsightController controller = Get.find();
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final localization = AppLocalizations.of(context)!;
+
+    MonthRepository monthRepository = MonthRepositoryImpl(context);
+    List<Month> months = monthRepository.getMonths();
+
+    ActiveDayRepository activeDayRepository = ActiveDayRepositoryImpl();
+    List<int> activeDays = activeDayRepository.getActiveDays();
 
     return Scaffold(
       backgroundColor: AppColors.blueBackgroundColor,
@@ -21,7 +33,7 @@ class InsightPage extends StatelessWidget {
         scrolledUnderElevation: 0,
         centerTitle: true,
         title: Text(
-          'Habits',
+          localization.habits,
           style: TextStyle(
             fontSize: 16,
             color: AppColors.blackColor,
@@ -68,7 +80,7 @@ class InsightPage extends StatelessWidget {
               const SizedBox(height: 16,),
               Center(
                 child: Text(
-                  'Insight & Data',
+                  localization.insight_data,
                   style: TextStyle(
                     fontSize: 16,
                     color: isDarkMode
@@ -127,7 +139,7 @@ class InsightPage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'August\nTracked Rate',
+                              localization.tracked_rate,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 14,
@@ -146,7 +158,7 @@ class InsightPage extends StatelessWidget {
               ),
               const SizedBox(height: 16,),
               Text(
-                'Work Streak',
+                localization.work_streak,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -175,7 +187,7 @@ class InsightPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Longest & Current',
+                        localization.longest_current,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -201,7 +213,7 @@ class InsightPage extends StatelessWidget {
                           ),
                           const SizedBox(width: 8,),
                           Text(
-                            'Days',
+                            localization.days,
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -214,7 +226,7 @@ class InsightPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 4,),
                       Text(
-                        '28 Jul 2024 - Today',
+                        localization.work_streak_date,
                         style: TextStyle(
                           color: isDarkMode
                               ? AppColors.greyDarkModeColor
@@ -232,7 +244,7 @@ class InsightPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Yearly View',
+                    localization.yearly_view,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -255,7 +267,7 @@ class InsightPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 4.5,),
                       Text(
-                        'Tracked',
+                        localization.tracked,
                         style: TextStyle(
                           fontSize: 12,
                           color: isDarkMode
@@ -277,7 +289,7 @@ class InsightPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 4.5,),
                       Text(
-                        'Untracked',
+                        localization.untracked,
                         style: TextStyle(
                             fontSize: 12,
                             color: isDarkMode
@@ -303,126 +315,18 @@ class InsightPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Jan',
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w400,
-                          color: isDarkMode
-                              ? AppColors.greyDarkModeColor
-                              : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Feb',
-                        style: TextStyle(
+                      for (int i = 0; i < months.length; i ++ ) ... [
+                        Text(
+                          months[i].name,
+                          style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
                             color: isDarkMode
                                 ? AppColors.greyDarkModeColor
                                 : AppColors.blackColor,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Mar',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Apr',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'May',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Jun',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Jul',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Aug',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Sept',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Oct',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Nov',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
-                      Text(
-                        'Dec',
-                        style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            color: isDarkMode
-                                ? AppColors.greyDarkModeColor
-                                : AppColors.blackColor,
-                        ),
-                      ),
+                      ],
                     ],
                   ),
                   const SizedBox(height: 16,),
@@ -438,7 +342,7 @@ class InsightPage extends StatelessWidget {
                         ),
                         itemCount: controller.totalDays,
                         itemBuilder: (context, index) {
-                          controller.isActive.value = controller.activeDays
+                          controller.isActive.value = activeDays
                               .contains(index + 1);
                           return  Container(
                             width: 4,
@@ -447,7 +351,7 @@ class InsightPage extends StatelessWidget {
                               color: controller.isActive.value
                                   ? AppColors.blueTrackedColor
                                   : isDarkMode
-                                  ? AppColors.greyDarkModeColor
+                                  ? AppColors.darkChartColor
                                   : AppColors.whiteUntrackedColor,
                               border: Border.fromBorderSide(
                                 BorderSide.none

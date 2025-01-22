@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:work_focus_mobile/features/dashboard/presentation/controllers/dashboard_controller.dart';
 import 'package:work_focus_mobile/routes/app_routes.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -15,6 +16,7 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final DashboardController controller = Get.find();
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final localization = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: isDarkMode
@@ -33,7 +35,7 @@ class DashboardPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'SUNDAY,26 AUGUST',
+                  localization.dashboard_date.toUpperCase(),
                   style: TextStyle(
                     fontSize: 12,
                     color: isDarkMode
@@ -44,7 +46,7 @@ class DashboardPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 4,),
                 Text(
-                  'Dashboard',
+                  localization.dashboard_title,
                   style: TextStyle(
                     fontSize: 32,
                     color: isDarkMode
@@ -55,7 +57,7 @@ class DashboardPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20,),
                 Text(
-                  'Work Log Focus',
+                  localization.dashboard_subtitle,
                   style: TextStyle(
                     fontSize: 16,
                     color: isDarkMode
@@ -83,7 +85,7 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Remaining',
+                          localization.remaining,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -147,7 +149,7 @@ class DashboardPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Working',
+                                  localization.working,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14,
@@ -177,7 +179,7 @@ class DashboardPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Target',
+                          localization.target,
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -198,7 +200,7 @@ class DashboardPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Failed',
+                          localization.failed,
                           style: TextStyle(
                             fontSize: 14,
                             color: isDarkMode
@@ -245,7 +247,7 @@ class DashboardPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Progress',
+                          localization.progress,
                           style: TextStyle(
                               fontSize: 14,
                               color: isDarkMode
@@ -292,7 +294,7 @@ class DashboardPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Success',
+                          localization.success,
                           style: TextStyle(
                               fontSize: 14,
                               color: isDarkMode
@@ -366,7 +368,7 @@ class DashboardPage extends StatelessWidget {
                             side: BorderSide.none
                         ),
                         label: Text(
-                          'Worked',
+                          localization.worked,
                           style: TextStyle(
                               color: controller.currentIndex.value == 0
                                   ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
@@ -386,7 +388,7 @@ class DashboardPage extends StatelessWidget {
                             side: BorderSide.none
                         ),
                         label: Text(
-                          'Remaining',
+                          localization.remaining,
                           style: TextStyle(
                               color: controller.currentIndex.value == 1
                                   ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
@@ -452,7 +454,7 @@ class DashboardPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Insight & Analytics',
+                    localization.insight_analytics,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -503,7 +505,7 @@ class DashboardPage extends StatelessWidget {
                               horizontal: 12
                             ),
                             child: Text(
-                              'Expenditure',
+                              localization.expenditure,
                               style: TextStyle(
                                 fontSize: 16,
                                 color: isDarkMode
@@ -519,7 +521,7 @@ class DashboardPage extends StatelessWidget {
                               horizontal: 12
                             ),
                             child: Text(
-                              '19 Aug - Now',
+                              localization.expenditure_habits_date,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -597,7 +599,7 @@ class DashboardPage extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 4,),
                                 Text(
-                                  'Task',
+                                  localization.task,
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
@@ -634,7 +636,7 @@ class DashboardPage extends StatelessWidget {
                                 horizontal: 12
                             ),
                             child: Text(
-                              'Habits Trend',
+                              localization.habits_trend,
                               style: TextStyle(
                                 fontSize: 16,
                                 color: isDarkMode
@@ -650,7 +652,7 @@ class DashboardPage extends StatelessWidget {
                                 horizontal: 12
                             ),
                             child: Text(
-                              '19 Aug - Now',
+                              localization.expenditure_habits_date,
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -728,7 +730,7 @@ class DashboardPage extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 4,),
                                   Text(
-                                    'Task',
+                                    localization.task,
                                     style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
