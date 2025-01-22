@@ -202,7 +202,9 @@ class LoginPage extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.emptyNavigation);
+                },
                 child: Text(
                   localization.forgot_password,
                   style: TextStyle(
@@ -225,7 +227,7 @@ class LoginPage extends StatelessWidget {
                       )
                   ),
                   onPressed: () {
-                    Get.toNamed(AppRoutes.bottomNavigationBar);
+                    Get.offAllNamed(AppRoutes.bottomNavigationBar);
                   },
                   child: Text(
                     localization.login,
@@ -251,7 +253,9 @@ class LoginPage extends StatelessWidget {
                     children: [
                       TextSpan(
                           text: localization.sign_up,
-                          recognizer: TapGestureRecognizer()..onTap = () {},
+                          recognizer: TapGestureRecognizer()..onTap = () {
+                            Get.toNamed(AppRoutes.emptyNavigation);
+                          },
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

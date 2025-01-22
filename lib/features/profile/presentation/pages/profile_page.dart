@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:work_focus_mobile/features/profile/presentation/controllers/profile_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:work_focus_mobile/routes/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -120,7 +121,9 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.emptyNavigation);
+                  },
                   child: Container(
                     width: Get.width,
                     height: 40,
@@ -164,7 +167,9 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10,),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.emptyNavigation);
+                  },
                   child: Container(
                     width: Get.width,
                     height: 40,
@@ -208,7 +213,9 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10,),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.emptyNavigation);
+                  },
                   child: Container(
                     width: Get.width,
                     height: 40,
@@ -252,7 +259,9 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10,),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.emptyNavigation);
+                  },
                   child: Container(
                     width: Get.width,
                     height: 40,
@@ -296,7 +305,9 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10,),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.offAllNamed(AppRoutes.login);
+                  },
                   child: Container(
                     width: Get.width,
                     height: 40,

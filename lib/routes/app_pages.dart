@@ -3,6 +3,8 @@ import 'package:work_focus_mobile/features/auth/presentation/bindings/login_bind
 import 'package:work_focus_mobile/features/auth/presentation/pages/login_page.dart';
 import 'package:work_focus_mobile/features/bottom_navigation_bar/presentation/bindings/bottom_navigation_bar_binding.dart';
 import 'package:work_focus_mobile/features/bottom_navigation_bar/presentation/pages/bottom_navigation_bar_page.dart';
+import 'package:work_focus_mobile/features/empty_navigation/presentation/bindings/empty_navigation_binding.dart';
+import 'package:work_focus_mobile/features/empty_navigation/presentation/pages/empty_navigation_page.dart';
 import 'package:work_focus_mobile/features/insight/presentation/bindings/insight_binding.dart';
 import 'package:work_focus_mobile/features/insight/presentation/pages/insight_page.dart';
 import 'package:work_focus_mobile/routes/app_routes.dart';
@@ -25,6 +27,11 @@ class AppPages {
         name: AppRoutes.insight,
         page: () => InsightPage(),
         binding: InsightBinding()
-    )
+    ),
+    GetPage(
+        name: AppRoutes.emptyNavigation,
+        page: () => EmptyNavigationPage(),
+        binding: EmptyNavigationBinding()
+    ),
   ];
 }

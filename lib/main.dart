@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:work_focus_mobile/core/theme/app_theme.dart';
 import 'package:work_focus_mobile/routes/app_pages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
 
-void main() {
   runApp(const MyApp());
 }
 

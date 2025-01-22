@@ -59,5 +59,6 @@
   "sign_out" : "Sign Out",
 
   "work_log" : "Work Log",
-  "analytic" : "Analytic"
+  "analytic" : "Analytic",
+  "empty_navigation" : "Empty Navigation"
 }
