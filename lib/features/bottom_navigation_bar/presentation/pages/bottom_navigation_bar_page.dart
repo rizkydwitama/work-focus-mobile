@@ -15,6 +15,8 @@ class BottomNavigationBarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BottomNavigationBarController controller = Get.find();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       body: Obx(() => IndexedStack(
         index: controller.currentIndex.value,
@@ -28,9 +30,10 @@ class BottomNavigationBarPage extends StatelessWidget {
       bottomNavigationBar: Container(
         height: 63,
         decoration: BoxDecoration(
-          color: AppColors.whiteColor,
           border: Border.all(
-            color: AppColors.blackColor.withValues(alpha: 0.08)
+            color: isDarkMode
+                ? AppColors.whiteColor.withValues(alpha: 0.08)
+                : AppColors.blackColor.withValues(alpha: 0.08)
           )
         ),
         child: Obx(() => BottomNavigationBar(
@@ -39,21 +42,31 @@ class BottomNavigationBarPage extends StatelessWidget {
           },
           currentIndex: controller.currentIndex.value,
           type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: const TextStyle(
-              color: AppColors.blackColor,
+          selectedLabelStyle: TextStyle(
+              color: isDarkMode
+                  ? AppColors.whiteColor
+                  : AppColors.blackColor,
               fontSize: 12,
               fontWeight: FontWeight.w400
           ),
-          unselectedLabelStyle: const TextStyle(
-              color: AppColors.clayColor,
+          unselectedLabelStyle: TextStyle(
+              color: isDarkMode
+                  ? AppColors.unselectedLabelDarkColor
+                  : AppColors.clayColor,
               fontSize: 12,
               fontWeight: FontWeight.w400
           ),
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          selectedItemColor: AppColors.blackColor,
-          unselectedItemColor: AppColors.clayColor,
-          backgroundColor: AppColors.whiteColor,
+          selectedItemColor: isDarkMode
+              ? AppColors.whiteColor
+              : AppColors.blackColor,
+          unselectedItemColor: isDarkMode
+              ? AppColors.unselectedLabelDarkColor
+              : AppColors.clayColor,
+          backgroundColor: isDarkMode
+              ? AppColors.darkBottomNavbarColor
+              : AppColors.whiteColor,
           items: [
             BottomNavigationBarItem(
                 icon: controller.currentIndex.value == 0?
@@ -62,7 +75,9 @@ class BottomNavigationBarPage extends StatelessWidget {
                   height: 30,
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
-                    'assets/images/icons/icon_dashboard_selected_black.svg',
+                    isDarkMode
+                        ? 'assets/images/icons/icon_dashboard_selected_white.svg'
+                        : 'assets/images/icons/icon_dashboard_selected_black.svg'
                   ),
                 )
                     :
@@ -72,6 +87,12 @@ class BottomNavigationBarPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_dashboard_unselected.svg',
+                      colorFilter: ColorFilter.mode(
+                          isDarkMode
+                              ? AppColors.unselectedLabelDarkColor
+                              : AppColors.greyColor,
+                          BlendMode.srcIn
+                      )
                   ),
                 ),
                 label: 'Dashboard'
@@ -85,7 +106,9 @@ class BottomNavigationBarPage extends StatelessWidget {
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_worklog_unselected.svg',
                     colorFilter: ColorFilter.mode(
-                        AppColors.blackColor,
+                        isDarkMode
+                            ? AppColors.whiteColor
+                            : AppColors.blackColor,
                         BlendMode.srcIn
                     )
                   ),
@@ -97,6 +120,12 @@ class BottomNavigationBarPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_worklog_unselected.svg',
+                      colorFilter: ColorFilter.mode(
+                          isDarkMode
+                              ? AppColors.unselectedLabelDarkColor
+                              : AppColors.greyColor,
+                          BlendMode.srcIn
+                      )
                   ),
                 ),
                 label: 'Work Log'
@@ -110,7 +139,9 @@ class BottomNavigationBarPage extends StatelessWidget {
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_analytic_unselected.svg',
                       colorFilter: ColorFilter.mode(
-                          AppColors.blackColor,
+                          isDarkMode
+                              ? AppColors.whiteColor
+                              : AppColors.blackColor,
                           BlendMode.srcIn
                       )
                   ),
@@ -122,6 +153,12 @@ class BottomNavigationBarPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_analytic_unselected.svg',
+                      colorFilter: ColorFilter.mode(
+                          isDarkMode
+                              ? AppColors.unselectedLabelDarkColor
+                              : AppColors.greyColor,
+                          BlendMode.srcIn
+                      )
                   ),
                 ),
                 label: 'Analytic'
@@ -133,7 +170,13 @@ class BottomNavigationBarPage extends StatelessWidget {
                   height: 30,
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
-                    'assets/images/icons/icon_profile_selected_black.svg',
+                    'assets/images/icons/icon_profile_unselected.svg',
+                    colorFilter: ColorFilter.mode(
+                        isDarkMode
+                            ? AppColors.whiteColor
+                            : AppColors.blackColor,
+                        BlendMode.srcIn
+                    ),
                   ),
                 )
                     :
@@ -143,6 +186,12 @@ class BottomNavigationBarPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     'assets/images/icons/icon_profile_unselected.svg',
+                      colorFilter: ColorFilter.mode(
+                          isDarkMode
+                              ? AppColors.unselectedLabelDarkColor
+                              : AppColors.greyColor,
+                          BlendMode.srcIn
+                      )
                   ),
                 ),
                 label: 'Profile'

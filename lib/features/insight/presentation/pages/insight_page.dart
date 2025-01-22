@@ -11,6 +11,7 @@ class InsightPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final InsightController controller = Get.find();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       backgroundColor: AppColors.blueBackgroundColor,
@@ -34,6 +35,7 @@ class InsightPage extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back_ios_new,
               size: 16,
+              color: AppColors.blackColor,
             )
         )
       ),
@@ -42,7 +44,9 @@ class InsightPage extends StatelessWidget {
         height: Get.height,
         padding: EdgeInsets.fromLTRB(16, 12, 16, 32),
         decoration: BoxDecoration(
-            color: AppColors.whiteColor,
+            color: isDarkMode
+                ? AppColors.darkBottomNavbarColor
+                : AppColors.whiteColor,
             borderRadius: BorderRadiusDirectional.vertical(
                 top: Radius.circular(12)
             ),
@@ -67,14 +71,18 @@ class InsightPage extends StatelessWidget {
                   'Insight & Data',
                   style: TextStyle(
                     fontSize: 16,
-                    color: AppColors.blackColor,
+                    color: isDarkMode
+                        ? AppColors.whiteColor
+                        : AppColors.blackColor,
                     fontWeight: FontWeight.w600
                   ),
                 ),
               ),
               const SizedBox(height: 12,),
               Divider(
-                color: AppColors.brightGreyColor,
+                color: isDarkMode
+                    ? AppColors.whiteColor.withValues(alpha: 0.08)
+                    : AppColors.brightGreyColor,
               ),
               const SizedBox(height: 16,),
               Center(
@@ -112,7 +120,9 @@ class InsightPage extends StatelessWidget {
                               '100%',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                color: AppColors.blackColor,
+                                color: isDarkMode
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontSize: 32
                               ),
                             ),
@@ -122,7 +132,9 @@ class InsightPage extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                color: AppColors.secondaryGreyColor
+                                color: isDarkMode
+                                    ? AppColors.greyDarkModeColor
+                                    : AppColors.secondaryGreyColor
                               ),
                             )
                           ],
@@ -138,19 +150,27 @@ class InsightPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.blackColor
+                  color: isDarkMode
+                      ? AppColors.greyDarkModeColor
+                      : AppColors.blackColor,
                 ),
               ),
               const SizedBox(height: 16,),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/images/images/image_work_streak.png',
-                    width: 53,
-                    height: 52,
+                  Visibility(
+                    visible: !isDarkMode,
+                    child: Image.asset(
+                      'assets/images/images/image_work_streak.png',
+                      width: 53,
+                      height: 52,
+                    ),
                   ),
-                  const SizedBox(width: 24,),
+                  Visibility(
+                      visible: !isDarkMode,
+                      child: SizedBox(width: 24,)
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -159,7 +179,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.secondaryGreyColor
+                          color: isDarkMode
+                              ? AppColors.greyDarkModeColor
+                              : AppColors.secondaryGreyColor
                         ),
                       ),
                       const SizedBox(height: 8,),
@@ -172,7 +194,9 @@ class InsightPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 28,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.blackColor
+                              color: isDarkMode
+                                  ? AppColors.greyDarkModeColor
+                                  : AppColors.blackColor,
                             ),
                           ),
                           const SizedBox(width: 8,),
@@ -181,7 +205,9 @@ class InsightPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.secondaryGreyColor
+                              color: isDarkMode
+                                  ? AppColors.greyDarkModeColor
+                                  : AppColors.secondaryGreyColor
                             ),
                           )
                         ],
@@ -190,7 +216,9 @@ class InsightPage extends StatelessWidget {
                       Text(
                         '28 Jul 2024 - Today',
                         style: TextStyle(
-                          color: AppColors.secondaryGreyColor,
+                          color: isDarkMode
+                              ? AppColors.greyDarkModeColor
+                              : AppColors.secondaryGreyColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 14
                         ),
@@ -208,7 +236,9 @@ class InsightPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.blackColor
+                      color: isDarkMode
+                          ? AppColors.greyDarkModeColor
+                          : AppColors.blackColor,
                     ),
                   ),
                   const SizedBox(height: 16,),
@@ -228,7 +258,9 @@ class InsightPage extends StatelessWidget {
                         'Tracked',
                         style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.blackColor,
+                          color: isDarkMode
+                              ? AppColors.greyDarkModeColor
+                              : AppColors.blackColor,
                           fontWeight: FontWeight.w400
                         ),
                       ),
@@ -238,7 +270,9 @@ class InsightPage extends StatelessWidget {
                         height: 6,
                         decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
-                            color: AppColors.whiteUntrackedColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.whiteUntrackedColor,
                         ),
                       ),
                       const SizedBox(width: 4.5,),
@@ -246,7 +280,9 @@ class InsightPage extends StatelessWidget {
                         'Untracked',
                         style: TextStyle(
                             fontSize: 12,
-                            color: AppColors.blackColor,
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                             fontWeight: FontWeight.w400
                         ),
                       ),
@@ -258,7 +294,9 @@ class InsightPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.blackColor
+                      color: isDarkMode
+                          ? AppColors.greyDarkModeColor
+                          : AppColors.blackColor,
                     ),
                   ),
                   const SizedBox(height: 8,),
@@ -270,7 +308,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.blackColor
+                          color: isDarkMode
+                              ? AppColors.greyDarkModeColor
+                              : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -278,7 +318,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -286,7 +328,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -294,7 +338,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -302,7 +348,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -310,7 +358,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -318,7 +368,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -326,7 +378,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -334,7 +388,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -342,7 +398,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -350,7 +408,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                       Text(
@@ -358,7 +418,9 @@ class InsightPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.blackColor,
                         ),
                       ),
                     ],
@@ -384,7 +446,12 @@ class InsightPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: controller.isActive.value
                                   ? AppColors.blueTrackedColor
+                                  : isDarkMode
+                                  ? AppColors.greyDarkModeColor
                                   : AppColors.whiteUntrackedColor,
+                              border: Border.fromBorderSide(
+                                BorderSide.none
+                              )
                             ),
                           );
                         }

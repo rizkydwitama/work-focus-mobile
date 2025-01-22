@@ -14,16 +14,21 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DashboardController controller = Get.find();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: AppColors.secondaryWhiteColor,
+      backgroundColor: isDarkMode
+          ? AppColors.blackColor
+          : AppColors.secondaryWhiteColor,
       body: ListView(
         padding: EdgeInsets.zero,
         children: [
           Container(
             width: double.infinity,
             padding: EdgeInsets.fromLTRB(16, 76, 16, 5),
-            color: AppColors.whiteColor,
+            color: isDarkMode
+                ? AppColors.blackColor
+                : AppColors.whiteColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -31,7 +36,9 @@ class DashboardPage extends StatelessWidget {
                   'SUNDAY,26 AUGUST',
                   style: TextStyle(
                     fontSize: 12,
-                    color: AppColors.greyColor,
+                    color: isDarkMode
+                        ? AppColors.greyDarkModeColor
+                        : AppColors.greyColor,
                     fontWeight: FontWeight.w400
                   ),
                 ),
@@ -40,7 +47,9 @@ class DashboardPage extends StatelessWidget {
                   'Dashboard',
                   style: TextStyle(
                     fontSize: 32,
-                    color: AppColors.blackColor,
+                    color: isDarkMode
+                        ? AppColors.whiteColor
+                        : AppColors.blackColor,
                     fontWeight: FontWeight.w600
                   ),
                 ),
@@ -49,7 +58,9 @@ class DashboardPage extends StatelessWidget {
                   'Work Log Focus',
                   style: TextStyle(
                     fontSize: 16,
-                    color: AppColors.blackColor,
+                    color: isDarkMode
+                        ? AppColors.whiteColor
+                        : AppColors.blackColor,
                     fontWeight: FontWeight.w600
                   ),
                 ),
@@ -66,7 +77,9 @@ class DashboardPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w600,
-                              color: AppColors.blackColor
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
                           ),
                         ),
                         Text(
@@ -74,7 +87,9 @@ class DashboardPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.secondaryGreyColor
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.greyColor
                           ),
                         )
                       ],
@@ -99,7 +114,9 @@ class DashboardPage extends StatelessWidget {
                                       showTitle: false,
                                     ),
                                     PieChartSectionData(
-                                      color: AppColors.whiteChartColor,
+                                      color: isDarkMode
+                                          ? AppColors.darkChartColor
+                                          : AppColors.whiteChartColor,
                                       value: 34,
                                       radius: 5,
                                       showTitle: false,
@@ -123,7 +140,9 @@ class DashboardPage extends StatelessWidget {
                                   '656',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      color: AppColors.blackColor,
+                                      color: isDarkMode
+                                          ? AppColors.whiteColor
+                                          : AppColors.blackColor,
                                       fontSize: 32
                                   ),
                                 ),
@@ -133,7 +152,9 @@ class DashboardPage extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
-                                      color: AppColors.secondaryGreyColor
+                                      color: isDarkMode
+                                          ? AppColors.greyDarkModeColor
+                                          : AppColors.greyColor
                                   ),
                                 )
                               ],
@@ -150,7 +171,9 @@ class DashboardPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w600,
-                              color: AppColors.blackColor
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
                           ),
                         ),
                         Text(
@@ -158,7 +181,9 @@ class DashboardPage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.secondaryGreyColor
+                              color: isDarkMode
+                                  ? AppColors.greyDarkModeColor
+                                  : AppColors.greyColor
                           ),
                         )
                       ],
@@ -176,7 +201,9 @@ class DashboardPage extends StatelessWidget {
                           'Failed',
                           style: TextStyle(
                             fontSize: 14,
-                            color: AppColors.greyColor,
+                            color: isDarkMode
+                                ? AppColors.greyDarkModeColor
+                                : AppColors.greyColor,
                             fontWeight: FontWeight.w400
                           ),
                         ),
@@ -187,7 +214,9 @@ class DashboardPage extends StatelessWidget {
                               width: 80,
                               height: 5,
                               decoration: BoxDecoration(
-                                color: AppColors.emptyIndicatorColor
+                                color: isDarkMode
+                                    ? AppColors.darkChartColor
+                                    : AppColors.emptyIndicatorColor
                               ),
                             ),
                             Container(
@@ -204,7 +233,9 @@ class DashboardPage extends StatelessWidget {
                           '42 / 77 %',
                           style: TextStyle(
                             fontSize: 14,
-                            color: AppColors.blackColor,
+                            color: isDarkMode
+                                ? AppColors.whiteColor
+                                : AppColors.blackColor,
                             fontWeight: FontWeight.w400
                           ),
                         )
@@ -217,7 +248,9 @@ class DashboardPage extends StatelessWidget {
                           'Progress',
                           style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.greyColor,
+                              color: isDarkMode
+                                  ? AppColors.greyDarkModeColor
+                                  : AppColors.greyColor,
                               fontWeight: FontWeight.w400
                           ),
                         ),
@@ -228,7 +261,9 @@ class DashboardPage extends StatelessWidget {
                               width: 80,
                               height: 5,
                               decoration: BoxDecoration(
-                                  color: AppColors.emptyIndicatorColor
+                                  color: isDarkMode
+                                      ? AppColors.darkChartColor
+                                      : AppColors.emptyIndicatorColor
                               ),
                             ),
                             Container(
@@ -245,7 +280,9 @@ class DashboardPage extends StatelessWidget {
                           '20 / 40 %',
                           style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.blackColor,
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
                               fontWeight: FontWeight.w400
                           ),
                         )
@@ -258,7 +295,9 @@ class DashboardPage extends StatelessWidget {
                           'Success',
                           style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.greyColor,
+                              color: isDarkMode
+                                  ? AppColors.greyDarkModeColor
+                                  : AppColors.greyColor,
                               fontWeight: FontWeight.w400
                           ),
                         ),
@@ -269,7 +308,9 @@ class DashboardPage extends StatelessWidget {
                               width: 80,
                               height: 5,
                               decoration: BoxDecoration(
-                                  color: AppColors.emptyIndicatorColor
+                                  color: isDarkMode
+                                      ? AppColors.darkChartColor
+                                      : AppColors.emptyIndicatorColor
                               ),
                             ),
                             Container(
@@ -286,7 +327,9 @@ class DashboardPage extends StatelessWidget {
                           '85 / 136 %',
                           style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.blackColor,
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
                               fontWeight: FontWeight.w400
                           ),
                         )
@@ -316,8 +359,8 @@ class DashboardPage extends StatelessWidget {
                       Chip(
                         side: BorderSide.none,
                         backgroundColor: controller.currentIndex.value == 0
-                            ? AppColors.blackColor
-                            : AppColors.whiteColor,
+                            ? isDarkMode ? AppColors.whiteColor : AppColors.blackColor
+                            : isDarkMode ? AppColors.blackColor : AppColors.whiteColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100),
                             side: BorderSide.none
@@ -326,8 +369,8 @@ class DashboardPage extends StatelessWidget {
                           'Worked',
                           style: TextStyle(
                               color: controller.currentIndex.value == 0
-                                  ? AppColors.whiteColor
-                                  : AppColors.blackColor,
+                                  ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
+                                  : isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w400
                           ),
@@ -336,8 +379,8 @@ class DashboardPage extends StatelessWidget {
                       Chip(
                         side: BorderSide.none,
                         backgroundColor: controller.currentIndex.value == 1
-                            ? AppColors.blackColor
-                            : AppColors.whiteColor,
+                            ? isDarkMode ? AppColors.whiteColor : AppColors.blackColor
+                            : isDarkMode ? AppColors.blackColor : AppColors.whiteColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100),
                             side: BorderSide.none
@@ -346,8 +389,8 @@ class DashboardPage extends StatelessWidget {
                           'Remaining',
                           style: TextStyle(
                               color: controller.currentIndex.value == 1
-                                  ? AppColors.whiteColor
-                                  : AppColors.blackColor,
+                                  ? isDarkMode ? AppColors.blackColor : AppColors.whiteColor
+                                  : isDarkMode ? AppColors.whiteColor : AppColors.blackColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w400
                           ),
@@ -368,7 +411,9 @@ class DashboardPage extends StatelessWidget {
                 width: 6,
                 height: 6,
                 decoration: BoxDecoration(
-                  color: AppColors.unselectedDotColor,
+                  color: isDarkMode
+                      ? AppColors.darkDotColor
+                      : AppColors.unselectedDotColor,
                   shape: BoxShape.circle
                 ),
               ),
@@ -377,7 +422,9 @@ class DashboardPage extends StatelessWidget {
                 width: 6,
                 height: 6,
                 decoration: BoxDecoration(
-                    color: AppColors.unselectedDotColor,
+                    color: isDarkMode
+                        ? AppColors.darkDotColor
+                        : AppColors.unselectedDotColor,
                     shape: BoxShape.circle
                 ),
               ),
@@ -386,7 +433,9 @@ class DashboardPage extends StatelessWidget {
                 width: 6,
                 height: 6,
                 decoration: BoxDecoration(
-                    color: AppColors.selectedDotColor,
+                    color: isDarkMode
+                        ? AppColors.whiteColor
+                        : AppColors.selectedDotColor,
                     shape: BoxShape.circle
                 ),
               )
@@ -407,7 +456,9 @@ class DashboardPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.blackColor
+                      color: isDarkMode
+                          ? AppColors.whiteColor
+                          : AppColors.blackColor
                     ),
                   ),
                   Container(
@@ -415,7 +466,13 @@ class DashboardPage extends StatelessWidget {
                     height: 24,
                     alignment: Alignment.center,
                     child: SvgPicture.asset(
-                      'assets/images/icons/icon_arrow_forward.svg'
+                      'assets/images/icons/icon_arrow_forward.svg',
+                      colorFilter: ColorFilter.mode(
+                          isDarkMode
+                              ? AppColors.whiteColor
+                              : AppColors.blackColor,
+                          BlendMode.srcIn
+                      ),
                     ),
                   )
                 ],
@@ -432,7 +489,9 @@ class DashboardPage extends StatelessWidget {
                     aspectRatio: 165.5 / 134,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: AppColors.whiteColor,
+                        color: isDarkMode
+                            ? AppColors.darkCardColor
+                            : AppColors.whiteColor,
                         borderRadius: BorderRadius.circular(8)
                       ),
                       child: Column(
@@ -447,7 +506,9 @@ class DashboardPage extends StatelessWidget {
                               'Expenditure',
                               style: TextStyle(
                                 fontSize: 16,
-                                color: AppColors.blackColor,
+                                color: isDarkMode
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -462,7 +523,9 @@ class DashboardPage extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                color: AppColors.greyColor
+                                color: isDarkMode
+                                    ? AppColors.greyDarkModeColor
+                                    : AppColors.greyColor
                               ),
                             ),
                           ),
@@ -510,7 +573,9 @@ class DashboardPage extends StatelessWidget {
                           Spacer(),
                           Divider(
                             height: 1,
-                            color: AppColors.brightGreyColor,
+                            color: isDarkMode
+                                ? AppColors.darkDividerColor
+                                : AppColors.brightGreyColor,
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -525,7 +590,9 @@ class DashboardPage extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
-                                    color: AppColors.blackColor
+                                    color: isDarkMode
+                                        ? AppColors.whiteColor
+                                        : AppColors.blackColor
                                   ),
                                 ),
                                 const SizedBox(width: 4,),
@@ -534,7 +601,9 @@ class DashboardPage extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
-                                      color: AppColors.greyColor
+                                      color: isDarkMode
+                                          ? AppColors.greyDarkModeColor
+                                          : AppColors.greyColor
                                   ),
                                 ),
                               ],
@@ -551,7 +620,9 @@ class DashboardPage extends StatelessWidget {
                     aspectRatio: 165.5 / 134,
                     child: Container(
                       decoration: BoxDecoration(
-                          color: AppColors.whiteColor,
+                          color: isDarkMode
+                              ? AppColors.darkCardColor
+                              : AppColors.whiteColor,
                           borderRadius: BorderRadius.circular(8)
                       ),
                       child: Column(
@@ -566,7 +637,9 @@ class DashboardPage extends StatelessWidget {
                               'Habits Trend',
                               style: TextStyle(
                                 fontSize: 16,
-                                color: AppColors.blackColor,
+                                color: isDarkMode
+                                    ? AppColors.whiteColor
+                                    : AppColors.blackColor,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -581,7 +654,9 @@ class DashboardPage extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColors.greyColor
+                                  color: isDarkMode
+                                      ? AppColors.greyDarkModeColor
+                                      : AppColors.greyColor
                               ),
                             ),
                           ),
@@ -629,7 +704,9 @@ class DashboardPage extends StatelessWidget {
                           Spacer(),
                           Divider(
                             height: 1,
-                            color: AppColors.brightGreyColor,
+                            color: isDarkMode
+                                ? AppColors.darkDividerColor
+                                : AppColors.brightGreyColor,
                           ),
                           Padding(
                               padding: EdgeInsets.symmetric(
@@ -644,7 +721,9 @@ class DashboardPage extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
-                                        color: AppColors.blackColor
+                                        color: isDarkMode
+                                            ? AppColors.whiteColor
+                                            : AppColors.blackColor
                                     ),
                                   ),
                                   const SizedBox(width: 4,),
@@ -653,7 +732,9 @@ class DashboardPage extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
-                                        color: AppColors.greyColor
+                                        color: isDarkMode
+                                            ? AppColors.greyDarkModeColor
+                                            : AppColors.greyColor
                                     ),
                                   ),
                                 ],

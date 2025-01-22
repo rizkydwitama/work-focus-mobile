@@ -9,12 +9,6 @@ class AnalyticPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AnalyticController controller = Get.find();
 
-    return Scaffold(
-      body: Center(
-        child: Text(
-          'Analytic Page'
-        ),
-      ),
-    );
+    return Scaffold();
   }
 }

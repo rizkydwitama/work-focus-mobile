@@ -11,15 +11,20 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ProfileController controller = Get.find();
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: AppColors.secondaryWhiteColor,
+      backgroundColor: isDarkMode
+          ? AppColors.darkBottomNavbarColor
+          : AppColors.secondaryWhiteColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: double.infinity,
-            color: AppColors.whiteColor,
+            color: isDarkMode
+                ? AppColors.darkBottomNavbarColor
+                : AppColors.whiteColor,
             padding: EdgeInsets.fromLTRB(16, 68, 16, 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +34,9 @@ class ProfilePage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.blackColor
+                    color: isDarkMode
+                        ? AppColors.whiteColor
+                        : AppColors.blackColor,
                   ),
                 ),
                 const SizedBox(height: 4,),
@@ -40,7 +47,9 @@ class ProfilePage extends StatelessWidget {
                       width: 51,
                       height: 49,
                       decoration: BoxDecoration(
-                        color: AppColors.blackColor,
+                        color: isDarkMode
+                            ? AppColors.darkProfileColor
+                            : AppColors.blackColor,
                         shape: BoxShape.circle
                       ),
                       child: Center(
@@ -63,7 +72,9 @@ class ProfilePage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.whiteColor
+                                : AppColors.blackColor
                           ),
                         ),
                         Text(
@@ -88,7 +99,9 @@ class ProfilePage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: AppColors.blackColor
+                color: isDarkMode
+                    ? AppColors.whiteColor
+                    : AppColors.blackColor
               ),
             ),
           ),
@@ -98,7 +111,9 @@ class ProfilePage extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(16, 12, 16, 12),
             margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
             decoration: BoxDecoration(
-              color: AppColors.whiteColor,
+              color: isDarkMode
+                  ? AppColors.darkBottomNavbarColor
+                  : AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
@@ -113,7 +128,9 @@ class ProfilePage extends StatelessWidget {
                       color: AppColors.transparentColor,
                       border: Border(
                         bottom: BorderSide(
-                          color: AppColors.brightGreyColor,
+                          color: isDarkMode
+                              ? AppColors.whiteDividerColor.withValues(alpha: 0.16)
+                              : AppColors.brightGreyColor,
                           width: 1
                         )
                       )
@@ -121,7 +138,13 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                          'assets/images/icons/icon_general_profile.svg'
+                          'assets/images/icons/icon_general_profile.svg',
+                          colorFilter: ColorFilter.mode(
+                            isDarkMode
+                                ? AppColors.whiteColor
+                                : AppColors.blackColor,
+                                BlendMode.srcIn
+                          ),
                         ),
                         const SizedBox(width: 16,),
                         Text(
@@ -129,7 +152,9 @@ class ProfilePage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor
+                            color: isDarkMode
+                                ? AppColors.whiteColor
+                                : AppColors.blackColor
                           ),
                         )
                       ],
@@ -147,7 +172,9 @@ class ProfilePage extends StatelessWidget {
                         color: AppColors.transparentColor,
                         border: Border(
                             bottom: BorderSide(
-                                color: AppColors.brightGreyColor,
+                                color: isDarkMode
+                                    ? AppColors.whiteDividerColor.withValues(alpha: 0.16)
+                                    : AppColors.brightGreyColor,
                                 width: 1
                             )
                         )
@@ -155,7 +182,13 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                            'assets/images/icons/icon_general_data.svg'
+                            'assets/images/icons/icon_general_data.svg',
+                          colorFilter: ColorFilter.mode(
+                              isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
+                              BlendMode.srcIn
+                          ),
                         ),
                         const SizedBox(width: 16,),
                         Text(
@@ -163,7 +196,9 @@ class ProfilePage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.blackColor
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor
                           ),
                         )
                       ],
@@ -181,7 +216,9 @@ class ProfilePage extends StatelessWidget {
                         color: AppColors.transparentColor,
                         border: Border(
                             bottom: BorderSide(
-                                color: AppColors.brightGreyColor,
+                                color: isDarkMode
+                                    ? AppColors.whiteDividerColor.withValues(alpha: 0.16)
+                                    : AppColors.brightGreyColor,
                                 width: 1
                             )
                         )
@@ -189,7 +226,13 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                            'assets/images/icons/icon_general_subscription.svg'
+                            'assets/images/icons/icon_general_subscription.svg',
+                          colorFilter: ColorFilter.mode(
+                              isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
+                              BlendMode.srcIn
+                          ),
                         ),
                         const SizedBox(width: 16,),
                         Text(
@@ -197,7 +240,9 @@ class ProfilePage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.blackColor
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor
                           ),
                         )
                       ],
@@ -215,7 +260,9 @@ class ProfilePage extends StatelessWidget {
                         color: AppColors.transparentColor,
                         border: Border(
                             bottom: BorderSide(
-                                color: AppColors.brightGreyColor,
+                                color: isDarkMode
+                                    ? AppColors.whiteDividerColor.withValues(alpha: 0.16)
+                                    : AppColors.brightGreyColor,
                                 width: 1
                             )
                         )
@@ -223,7 +270,13 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                            'assets/images/icons/icon_general_password.svg'
+                            'assets/images/icons/icon_general_password.svg',
+                          colorFilter: ColorFilter.mode(
+                              isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
+                              BlendMode.srcIn
+                          ),
                         ),
                         const SizedBox(width: 16,),
                         Text(
@@ -231,7 +284,9 @@ class ProfilePage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.blackColor
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor
                           ),
                         )
                       ],
@@ -251,7 +306,13 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                            'assets/images/icons/icon_general_signout.svg'
+                            'assets/images/icons/icon_general_signout.svg',
+                          colorFilter: ColorFilter.mode(
+                              isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor,
+                              BlendMode.srcIn
+                          ),
                         ),
                         const SizedBox(width: 16,),
                         Text(
@@ -259,7 +320,9 @@ class ProfilePage extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.blackColor
+                              color: isDarkMode
+                                  ? AppColors.whiteColor
+                                  : AppColors.blackColor
                           ),
                         )
                       ],

@@ -9,8 +9,6 @@ class WorkLogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final WorkLogController controller = Get.find();
     
-    return Scaffold(
-      body: SafeArea(child: Text('Work Log Page')),
-    );
+    return Scaffold();
   }
 }
